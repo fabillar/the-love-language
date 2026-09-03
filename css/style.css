@@ -11,6 +11,7 @@
   --rose-deep: #D6155C;
   --cream: #FFF9F2;
   --cream-2: #FDECD8;
+  --sage-mist: #F1F0E4;
   --ink: #221B15;
   --ink-soft: #5B4F42;
   --gold: #F0A400;
@@ -525,7 +526,7 @@ h1,h2,h3,h4{
 /* ============================================================
    OCCASIONS
    ============================================================ */
-.occasions{ background: var(--cream); padding: 20px 0 110px; }
+.occasions{ background: var(--sage-mist); padding: 20px 0 110px; }
 .occasion-grid{
   display:grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
 }
@@ -846,17 +847,19 @@ h1,h2,h3,h4{
   .hero-actions{ flex-direction: column; align-items:center; }
   .gallery-grid{ grid-auto-rows: 200px; }
 
-  .photo-stack{ width: min(260px, 76%); }
+  /* Compact hero on mobile: image above the title, sized small so the
+     title, subtext and buttons stay in the first fold. */
+  .hero-grid{ padding-top: 90px; gap: 18px; }
+  .hero-visual{ order:-1; min-height:0; margin-bottom: 2px; }
+  .hero-visual-ring, .hero-visual-glow{ display:none; }
+  .floating-badge{ display:none; }
+  .hero-mini-stats{ margin-top: 26px; }
+
+  .photo-stack{ width: min(190px, 54%); }
   .peek-left{ transform: translate(-11%, 5%) rotate(-9deg); }
   .peek-right{ transform: translate(11%, 5%) rotate(9deg); }
   .peek-left:hover, .peek-left:focus-visible{ transform: translate(-25%, -2%) rotate(-12deg) scale(1.04); }
   .peek-right:hover, .peek-right:focus-visible{ transform: translate(25%, -2%) rotate(12deg) scale(1.04); }
-  .hero-visual-ring{ width: 280px; height:280px; }
-  .hero-visual-ring.ring-2{ width: 320px; height:320px; }
-  .hero-visual-glow{ width: 240px; height:240px; }
-  .floating-badge{ font-size:.74rem; padding: 8px 14px; }
-  .badge-1{ top: 2%; left: 2%; }
-  .badge-2{ bottom: 4%; right: 2%; }
 }
 
 @media (max-width: 480px){
@@ -868,13 +871,10 @@ h1,h2,h3,h4{
   .order-form{ padding: 26px 20px; }
   .container{ padding-left: 18px; padding-right: 18px; }
 
-  .hero-visual{ min-height: 300px; flex-direction: column; gap: 14px; }
-  .photo-stack{ width: min(230px, 72%); }
+  .hero-grid{ padding-top: 84px; }
+  .photo-stack{ width: min(160px, 50%); }
   .peek-left{ transform: translate(-9%, 5%) rotate(-8deg); }
   .peek-right{ transform: translate(9%, 5%) rotate(8deg); }
   .peek-left:hover, .peek-left:focus-visible{ transform: translate(-20%, -2%) rotate(-11deg) scale(1.04); }
   .peek-right:hover, .peek-right:focus-visible{ transform: translate(20%, -2%) rotate(11deg) scale(1.04); }
-  .hero-visual-ring{ width: 260px; height:260px; }
-  .hero-visual-ring.ring-2{ width: 296px; height:296px; }
-  .floating-badge{ position: static; animation: none; }
 }

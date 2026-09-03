@@ -908,4 +908,10 @@ body.menu-open .brand{ opacity:0; visibility:hidden; pointer-events:none; transi
   .peek-right{ transform: translate(22%, 6%) rotate(11deg); }
   .peek-left:hover, .peek-left:focus-visible{ transform: translate(-32%, -2%) rotate(-13deg) scale(1.04); }
   .peek-right:hover, .peek-right:focus-visible{ transform: translate(32%, -2%) rotate(13deg) scale(1.04); }
+
+  .btn .btn-icon svg {
+    padding-right: 0;
+    border-right: 0;
+    margin-right: 0;
+  }
 }

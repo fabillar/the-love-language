@@ -206,19 +206,27 @@ h1,h2,h3,h4{
 }
 .nav-toggle span{ display:block; width:100%; height:2px; flex-shrink:0; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.4); border-radius:2px; transition: transform .3s var(--ease), opacity .3s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease); }
 .site-header.scrolled .nav-toggle span{ background: var(--sage-deep); box-shadow: none; }
+/* When the sidebar is open, force the icon to gold so it always stands
+   out against the sidebar's dark green, regardless of scroll state. */
+.nav-toggle.open span,
+.site-header.scrolled .nav-toggle.open span{ background: var(--gold); box-shadow: none; }
 .nav-toggle.open span:nth-child(1){ transform: translateY(11px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2){ opacity:0; }
 .nav-toggle.open span:nth-child(3){ transform: translateY(-11px) rotate(-45deg); }
 
 .mobile-menu{
   position: fixed; top:0; right:0; height:100vh; width: min(78vw, 320px); z-index: 490;
-  background: var(--cream); box-shadow: -14px 0 40px rgba(0,0,0,.12);
+  background: var(--sage-deep); box-shadow: -14px 0 40px rgba(0,0,0,.25);
   display:flex; flex-direction: column; gap: 6px; padding: 110px 34px 34px;
   transform: translateX(100%); transition: transform .45s var(--ease);
 }
 .mobile-menu.open{ transform: translateX(0); }
-.mobile-menu a{ font-family: var(--font-display); font-size: 1.4rem; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.06); color: var(--sage-deep); }
-.mobile-menu .mm-cta{ margin-top: 18px; text-align:center; background: var(--sage-deep); color:#fff; border-radius: 999px; border:none; font-family: var(--font-sans); font-size:1rem; }
+.mobile-menu a{ font-family: var(--font-display); font-size: 1.4rem; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.16); color: #fff; }
+.mobile-menu .mm-cta{ margin-top: 18px; text-align:center; background: var(--gold); color: var(--sage-deep); border-radius: 999px; border:none; font-family: var(--font-sans); font-size:1rem; font-weight:600; }
+
+/* Hide the brand mark while the mobile menu is open so it doesn't show
+   through/behind the sidebar panel. */
+body.menu-open .brand{ opacity:0; visibility:hidden; pointer-events:none; transition: opacity .25s var(--ease); }
 
 /* ============================================================
    HERO
@@ -407,6 +415,19 @@ h1,h2,h3,h4{
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), color .35s var(--ease);
 }
 .btn span{ position: relative; z-index:3; display:inline-flex; align-items:center; gap:8px; }
+.btn .btn-icon{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:0; overflow:visible; flex-shrink:0;
+}
+.btn .btn-icon svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding-right: 10px;
+  border-right: 1px solid #ffffff54;
+  margin-right: 10px;
+  box-sizing: content-box;
+}
 .btn::before{
   content:''; position:absolute; inset:0; z-index:1;
   transform: translateX(-102%);

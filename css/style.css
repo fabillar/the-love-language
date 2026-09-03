@@ -131,20 +131,6 @@ h1,h2,h3,h4{
 @keyframes spinBloom{ to{ transform: rotate(360deg); } }
 @keyframes pulseBloom{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.12);} }
 
-/* ---------- Background decor flourishes ---------- */
-.bg-decor{ position: fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
-.deco{ position:absolute; color: var(--sage); }
-.deco-1{ top: 8%; left: -20px; }
-.deco-2{ top: 40%; right: -10px; }
-.deco-3{ bottom: 12%; left: 2%; }
-.deco-4{ bottom: 30%; right: 6%; }
-.sway{ animation: sway 7s ease-in-out infinite; }
-.sway-slow{ animation: sway 11s ease-in-out infinite; }
-@keyframes sway{
-  0%,100%{ transform: translateY(0) rotate(0deg); }
-  50%{ transform: translateY(-18px) rotate(6deg); }
-}
-
 /* ============================================================
    HEADER / NAV
    ============================================================ */
@@ -212,7 +198,9 @@ h1,h2,h3,h4{
 .nav-cta:hover{ background: var(--rose-deep); transform: translateY(-2px); }
 
 .nav-toggle{
-  display:none; background:none; border:none; width: 34px; height: 24px;
+  display:none; position:relative; z-index:501;
+  width: 34px; height: 24px;
+  background:none; border:none;
   flex-direction: column; justify-content: space-between; padding:0;
 }
 .nav-toggle span{ display:block; height:2px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.4); border-radius:2px; transition: transform .3s var(--ease), opacity .3s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease); }
@@ -457,6 +445,10 @@ h1,h2,h3,h4{
 .btn-light{ background:#fff; color: var(--sage-deep); }
 .btn-light::before{ background: var(--blush); }
 
+.btn-outline{ color: var(--sage-deep); border-color: var(--sage-deep); }
+.btn-outline::before{ background: var(--sage-deep); }
+.btn-outline:hover{ color:#fff; }
+
 .btn-submit{ width:100%; margin-top: 6px; border:none; }
 .btn-spinner{
   width:16px; height:16px; margin-left:10px; border-radius:50%;
@@ -526,7 +518,7 @@ h1,h2,h3,h4{
 /* ============================================================
    OCCASIONS
    ============================================================ */
-.occasions{ background: var(--sage-mist); padding: 20px 0 110px; }
+.occasions{ background: var(--sage-mist); padding: 20px 0 60px; }
 .occasion-grid{
   display:grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
 }
@@ -554,9 +546,10 @@ h1,h2,h3,h4{
 /* ============================================================
    GALLERY
    ============================================================ */
-.gallery{ background: var(--cream-2); padding: 110px 0; position: relative; }
+.gallery{ background: var(--cream-2); padding: 20px 0 110px; position: relative; }
 .gallery-grid{
   display:grid;
+  grid-auto-flow: dense;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 230px;
   gap: 18px;
@@ -581,6 +574,19 @@ h1,h2,h3,h4{
   transition: opacity .4s var(--ease), transform .4s var(--ease);
 }
 .gallery-item:hover figcaption{ opacity:1; transform: translateY(0); }
+.gallery-item.gallery-extra{ display:none; }
+.gallery-item.gallery-extra.is-shown{
+  display:block;
+  animation: galleryReveal .6s var(--ease);
+}
+@keyframes galleryReveal{
+  from{ opacity:0; transform: translateY(16px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .gallery-item.gallery-extra.is-shown{ animation:none; }
+}
+.gallery-more-wrap{ text-align:center; margin-top: 46px; }
 
 /* ============================================================
    PROCESS
@@ -668,6 +674,7 @@ h1,h2,h3,h4{
   0%{ background-position: 0% 50%; } 50%{ background-position: 100% 50%; } 100%{ background-position: 0% 50%; }
 }
 .cta-inner h2{ color:#fff; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.cta-inner h2 .highlight{ font-size: 1.5em; }
 .cta-inner p{ color: rgba(255,255,255,.9); margin-bottom: 30px; }
 
 /* ============================================================
@@ -783,7 +790,7 @@ h1,h2,h3,h4{
 
 .back-to-top{
   position: fixed; right: 26px; bottom: 92px; z-index: 400;
-  width: 44px; height:44px; border-radius:50%;
+  width: 58px; height:58px; border-radius:50%;
   background: #fff; color: var(--sage-deep); border: 1px solid var(--sage);
   display:flex; align-items:center; justify-content:center;
   opacity:0; visibility:hidden; transform: translateY(10px);
@@ -849,11 +856,11 @@ h1,h2,h3,h4{
 
   /* Compact hero on mobile: image above the title, sized small so the
      title, subtext and buttons stay in the first fold. */
-  .hero-grid{ padding-top: 90px; gap: 18px; }
-  .hero-visual{ order:-1; min-height:0; margin-bottom: 2px; }
+  .hero-grid{ padding-top: 90px; padding-bottom: 52px; gap: 32px; }
+  .hero-visual{ order:-1; min-height:0; }
   .hero-visual-ring, .hero-visual-glow{ display:none; }
   .floating-badge{ display:none; }
-  .hero-mini-stats{ margin-top: 26px; }
+  .hero-mini-stats{ display:none; }
 
   .photo-stack{ width: min(190px, 54%); }
   .peek-left{ transform: translate(-11%, 5%) rotate(-9deg); }

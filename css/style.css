@@ -15,6 +15,9 @@
   --ink-soft: #5B4F42;
   --gold: #F0A400;
   --white: #ffffff;
+  --maroon: #3A000C;
+  --maroon-deep: #1C0006;
+  --wine: #7A1240;
 
   --font-display: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
   --font-sans: 'Jost', 'Segoe UI', sans-serif;
@@ -98,23 +101,6 @@ h1,h2,h3,h4{
   filter: drop-shadow(0 6px 16px rgba(0,0,0,.4));
 }
 
-/* Subtle, occasional sparkle on individual letters — minimal by design */
-.shimmer-letter{
-  display: inline-block;
-  position: relative;
-  color: #E8B23A;
-  -webkit-text-fill-color: #E8B23A;
-  animation: letterShimmer 6.5s ease-in-out infinite;
-}
-.hero-line-2 .shimmer-letter:nth-of-type(2){ animation-delay: 3.1s; }
-@keyframes letterShimmer{
-  0%, 85%, 100%{ filter: brightness(1) drop-shadow(0 0 0 rgba(255,255,255,0)); }
-  91%{ filter: brightness(1.9) drop-shadow(0 0 12px rgba(255,246,214,.95)); }
-  96%{ filter: brightness(1.15) drop-shadow(0 0 3px rgba(255,246,214,.4)); }
-}
-@media (prefers-reduced-motion: reduce){
-  .shimmer-letter{ animation: none; }
-}
 
 /* ---------- Reveal on scroll ---------- */
 .reveal{
@@ -253,7 +239,7 @@ h1,h2,h3,h4{
   display:flex; align-items:center;
   overflow:hidden;
   isolation: isolate;
-  background: linear-gradient(125deg, #0d3320 0%, #1c5636 32%, #6e1a45 72%, #430f29 100%);
+  background: linear-gradient(125deg, var(--maroon-deep) 0%, var(--maroon) 34%, var(--wine) 68%, #12040a 100%);
   background-size: 220% 220%;
   animation: heroGradient 18s ease infinite;
 }
@@ -267,7 +253,7 @@ h1,h2,h3,h4{
 .blob{ position:absolute; border-radius:50%; filter: blur(50px); opacity:.55; }
 .blob-1{ width:380px; height:380px; top:-100px; left:-80px; background: radial-gradient(circle, rgba(240,164,0,.55), transparent 70%); animation: blobFloat 12s ease-in-out infinite; }
 .blob-2{ width:320px; height:320px; bottom:-100px; right:8%; background: radial-gradient(circle, rgba(242,70,123,.5), transparent 70%); animation: blobFloat 15s ease-in-out infinite reverse; }
-.blob-3{ width:260px; height:260px; top:30%; right:-100px; background: radial-gradient(circle, rgba(76,140,91,.55), transparent 70%); animation: blobFloat 10s ease-in-out infinite; }
+.blob-3{ width:260px; height:260px; top:30%; right:-100px; background: radial-gradient(circle, rgba(216,60,110,.4), transparent 70%); animation: blobFloat 10s ease-in-out infinite; }
 @keyframes blobFloat{
   0%,100%{ transform: translate(0,0) scale(1); }
   50%{ transform: translate(30px,-24px) scale(1.12); }
@@ -281,26 +267,18 @@ h1,h2,h3,h4{
   padding-top: 70px;
 }
 .hero-copy{ text-align:left; }
-.hero .eyebrow{ color: var(--gold); letter-spacing: .3em; }
+.hero .eyebrow{ color: #fff; letter-spacing: .3em; }
 .hero-title{
   display: flex;
   flex-direction: column;
   gap: 4px;
   letter-spacing: -.01em;
 }
-.hero-line-1{
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: rgba(255,255,255,.92);
-  font-size: clamp(1.5rem, 3.1vw, 2.15rem);
-  line-height: 1.15;
-  text-shadow: 0 8px 30px rgba(0,0,0,.3);
-}
 .hero-line-2{
   display: block;
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: clamp(2.2rem, 4.6vw, 3.5rem);
+  font-size: clamp(2.8rem, 6.2vw, 4.6rem);
   line-height: 1.1;
   white-space: nowrap;
   background-image: linear-gradient(100deg,
@@ -381,14 +359,6 @@ h1,h2,h3,h4{
   0%,100%{ transform: translateY(0); }
   50%{ transform: translateY(-12px); }
 }
-
-.scroll-cue{
-  position:absolute; bottom: 30px; left:50%; transform: translateX(-50%);
-  width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.75); border-radius: 20px;
-  z-index:3; display:flex; justify-content:center; padding-top: 8px;
-}
-.scroll-cue-dot{ width:5px; height:5px; border-radius:50%; background:#fff; animation: scrollDot 1.8s ease-in-out infinite; }
-@keyframes scrollDot{ 0%{ transform: translateY(0); opacity:1;} 70%{ transform: translateY(14px); opacity:0;} 100%{opacity:0;} }
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -824,5 +794,4 @@ h1,h2,h3,h4{
   .hero-visual-ring{ width: 260px; height:260px; }
   .hero-visual-ring.ring-2{ width: 296px; height:296px; }
   .floating-badge{ position: static; animation: none; }
-  .badge-2{ display:none; }
 }

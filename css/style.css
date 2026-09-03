@@ -200,10 +200,11 @@ h1,h2,h3,h4{
 .nav-toggle{
   display:none; position:relative; z-index:501;
   width: 34px; height: 24px;
-  background:none; border:none;
-  flex-direction: column; justify-content: space-between; padding:0;
+  -webkit-appearance:none; appearance:none;
+  background:none; border:none; margin:0; cursor:pointer;
+  align-items: stretch; flex-direction: column; justify-content: space-between; padding:0;
 }
-.nav-toggle span{ display:block; height:2px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.4); border-radius:2px; transition: transform .3s var(--ease), opacity .3s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease); }
+.nav-toggle span{ display:block; width:100%; height:2px; flex-shrink:0; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.4); border-radius:2px; transition: transform .3s var(--ease), opacity .3s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease); }
 .site-header.scrolled .nav-toggle span{ background: var(--sage-deep); box-shadow: none; }
 .nav-toggle.open span:nth-child(1){ transform: translateY(11px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2){ opacity:0; }
@@ -405,7 +406,7 @@ h1,h2,h3,h4{
   overflow: hidden;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), color .35s var(--ease);
 }
-.btn span{ position: relative; z-index:3; }
+.btn span{ position: relative; z-index:3; display:inline-flex; align-items:center; gap:8px; }
 .btn::before{
   content:''; position:absolute; inset:0; z-index:1;
   transform: translateX(-102%);
@@ -851,7 +852,9 @@ h1,h2,h3,h4{
   .nav-toggle{ display:flex; }
   .form-row{ grid-template-columns: 1fr; }
   .footer-inner{ grid-template-columns: 1fr; }
-  .hero-actions{ flex-direction: column; align-items:center; }
+  .hero-actions{ flex-direction: column; align-items:stretch; gap: 10px; max-width: 280px; margin: 0 auto; }
+  .hero-actions .btn{ width: 100%; }
+  .hero-actions .btn span{ justify-content:center; }
   .gallery-grid{ grid-auto-rows: 200px; }
 
   /* Compact hero on mobile: image above the title, sized small so the
@@ -863,10 +866,10 @@ h1,h2,h3,h4{
   .hero-mini-stats{ display:none; }
 
   .photo-stack{ width: min(190px, 54%); }
-  .peek-left{ transform: translate(-11%, 5%) rotate(-9deg); }
-  .peek-right{ transform: translate(11%, 5%) rotate(9deg); }
-  .peek-left:hover, .peek-left:focus-visible{ transform: translate(-25%, -2%) rotate(-12deg) scale(1.04); }
-  .peek-right:hover, .peek-right:focus-visible{ transform: translate(25%, -2%) rotate(12deg) scale(1.04); }
+  .peek-left{ transform: translate(-24%, 6%) rotate(-12deg); }
+  .peek-right{ transform: translate(24%, 6%) rotate(12deg); }
+  .peek-left:hover, .peek-left:focus-visible{ transform: translate(-34%, -2%) rotate(-14deg) scale(1.04); }
+  .peek-right:hover, .peek-right:focus-visible{ transform: translate(34%, -2%) rotate(14deg) scale(1.04); }
 }
 
 @media (max-width: 480px){
@@ -880,8 +883,8 @@ h1,h2,h3,h4{
 
   .hero-grid{ padding-top: 84px; }
   .photo-stack{ width: min(160px, 50%); }
-  .peek-left{ transform: translate(-9%, 5%) rotate(-8deg); }
-  .peek-right{ transform: translate(9%, 5%) rotate(8deg); }
-  .peek-left:hover, .peek-left:focus-visible{ transform: translate(-20%, -2%) rotate(-11deg) scale(1.04); }
-  .peek-right:hover, .peek-right:focus-visible{ transform: translate(20%, -2%) rotate(11deg) scale(1.04); }
+  .peek-left{ transform: translate(-22%, 6%) rotate(-11deg); }
+  .peek-right{ transform: translate(22%, 6%) rotate(11deg); }
+  .peek-left:hover, .peek-left:focus-visible{ transform: translate(-32%, -2%) rotate(-13deg) scale(1.04); }
+  .peek-right:hover, .peek-right:focus-visible{ transform: translate(32%, -2%) rotate(13deg) scale(1.04); }
 }

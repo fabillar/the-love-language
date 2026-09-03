@@ -189,6 +189,18 @@
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
   });
 
+  /* ---------------- Gallery "View More" ---------------- */
+  const galleryMoreBtn = document.getElementById("galleryMoreBtn");
+  if (galleryMoreBtn) {
+    galleryMoreBtn.addEventListener("click", () => {
+      const extras = document.querySelectorAll(".gallery-item.gallery-extra");
+      extras.forEach((item, i) => {
+        setTimeout(() => item.classList.add("is-shown"), prefersReducedMotion ? 0 : i * 80);
+      });
+      galleryMoreBtn.closest(".gallery-more-wrap").remove();
+    });
+  }
+
   /* ---------------- Gallery lightbox ---------------- */
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");

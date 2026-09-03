@@ -195,7 +195,7 @@
   const lightboxCaption = document.getElementById("lightboxCaption");
   const lightboxClose = document.getElementById("lightboxClose");
 
-  document.querySelectorAll(".gallery-item").forEach((item) => {
+  document.querySelectorAll(".gallery-item, .stack-photo").forEach((item) => {
     item.addEventListener("click", () => {
       const full = item.getAttribute("data-full");
       const caption = item.getAttribute("data-caption");
